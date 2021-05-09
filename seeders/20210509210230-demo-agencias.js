@@ -2,23 +2,32 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+    return await queryInterface.bulkInsert('Bancos', [
+    {
+     numero: 0001,
+     descricao:"Agência praça sete"
+     },
+    {
+     numero: 7548,
+     descricao:"Agência Internacional"
+     },
+    {
+     numero: 1585,
+     descricao:"Agência Wenefredo Portela"
+     },
+    {
+     numero: 4259,
+     descricao:"Agência Brasileira de Contas"
+     },
+    {
+     numero: 9648,
+     descricao:"Agência Militar"
+     },
+    ], {});
+    
   },
 
   down: async (queryInterface, Sequelize) => {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    return await queryInterface.bulkDelete('Agencias', null, {})
   }
 };
