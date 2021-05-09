@@ -1,12 +1,13 @@
-const Sequelize = require('sequelize')
-const database = require('../models')
+const {
+    Bancos, Sequelize 
+} = require('../models/')
 const Op = Sequelize.Op
 
 
 class BancosController{
     static async buscaTodosBancos(req, res){
         try{
-            const todasBancos = database.findAll()
+            const todasBancos = Bancos.findAll()
             return res.status(200).json(todasBancos)
         }catch(erro){
             return res.status(400).json({
@@ -17,7 +18,7 @@ class BancosController{
     static async buscaBancoPorID(req, res){
         const { id } = req.params
         try{
-            const bancoRetorno = database.findOne({
+            const bancoRetorno = Bancos.findOne({
                 where: { id:Number(id)
 
                 }
@@ -31,7 +32,7 @@ class BancosController{
     }
     static async inserirBanco(req, res) {
         try {
-            const novoBanco = await database.create(req.body)
+            const novoBanco = await Bancos.create(req.body)
             return res.status(200).json(novoBanco)
         } catch (erro) {
             return res.status(400).json({
@@ -41,7 +42,7 @@ class BancosController{
     }
     static async deletaBanco(req, res) {
         try {
-            const bancoAlvo = await database.findByPk(req.params.id)
+            const bancoAlvo = await Bancos.findByPk(req.params.id)
             if (bancoAlvo) {
                 await bancoAlvo.destroy()
                 return res.status(204).json(bancoAlvo)
@@ -58,7 +59,7 @@ class BancosController{
     }
     static async atualizaBanco(req, res) {
         try {
-            const bancoAlvo = await database.findByPk(req.params.id)
+            const bancoAlvo = await Bancos.findByPk(req.params.id)
             if (bancoAlvo) {
                 await bancoAlvo.update(req.body)
                 return res.status(204).json(bancoAlvo)
@@ -76,7 +77,7 @@ class BancosController{
     static async buscaBancoPorNumero(req, res) {
         let nome = '%'+req.query.nome
         try {
-            const bancos = await database.findAll({
+            const bancos = await Bancos.findAll({
                 where:{
                     nome: {
                         [Op.like]: nome

@@ -1,12 +1,13 @@
-const Sequelize = require('sequelize')
-const database = require('../models')
+const {
+    Bancos, Sequelize 
+} = require('../models/')
 const Op = Sequelize.Op
     
 
 class ClientesController{
     static async buscaTodosClientes(req, res){
         try{
-            const todasClientes = database.findAll()
+            const todasClientes = Clientes.findAll()
             return res.status(200).json(todasClientes)
         }catch(erro){
             return res.status(400).json({
@@ -17,7 +18,7 @@ class ClientesController{
     static async buscaClientePorID(req, res){
         const { id } = req.params
         try{
-            const clienteRetorno = database.findOne({
+            const clienteRetorno = Clientes.findOne({
                 where: { id:Number(id)
 
                 }
@@ -31,7 +32,7 @@ class ClientesController{
     }
     static async inserirCliente(req, res) {
         try {
-            const novoCliente = await database.create(req.body)
+            const novoCliente = await Clientes.create(req.body)
             return res.status(200).json(novoCliente)
         } catch (erro) {
             return res.status(400).json({
@@ -41,7 +42,7 @@ class ClientesController{
     }
     static async deletaCliente(req, res) {
         try {
-            const clienteAlvo = await database.findByPk(req.params.id)
+            const clienteAlvo = await Clientes.findByPk(req.params.id)
             if (clienteAlvo) {
                 await clienteAlvo.destroy()
                 return res.status(204).json(clienteAlvo)
@@ -58,7 +59,7 @@ class ClientesController{
     }
     static async atualizaCliente(req, res) {
         try {
-            const clienteAlvo = await database.findByPk(req.params.id)
+            const clienteAlvo = await Clientes.findByPk(req.params.id)
             if (clienteAlvo) {
                 await clienteAlvo.update(req.body)
                 return res.status(204).json(clienteAlvo)
@@ -76,7 +77,7 @@ class ClientesController{
     static async buscaClientePorNome(req, res) {
         let nome = '%'+req.query.nome
         try {
-            const agencias = await database.findAll({
+            const agencias = await Clientes.findAll({
                 where:{
                     nome: {
                         [Op.like]: nome

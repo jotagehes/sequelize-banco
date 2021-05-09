@@ -1,11 +1,12 @@
-const Sequelize = require('sequelize')
-const database = require('../models')
+const {
+    Agencias, Sequelize 
+} = require('../models/')
 const Op = Sequelize.Op
 
 class AgenciasController{
     static async buscaTodasAgencias(req, res){
         try{
-            const todasAgencias = database.findAll()
+            const todasAgencias = await Agencias.findAll()
             return res.status(200).json(todasAgencias)
         }catch(erro){
             return res.status(400).json({

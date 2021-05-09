@@ -2,26 +2,36 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return await queryInterface.bulkInsert('Bancos', [
+    return await queryInterface.bulkInsert('Agencias', [
     {
-     numero: 0001,
-     descricao:"Agência praça sete"
+     numero: 7451,
+     descricao:"Agência praça sete",
+     createdAt: new Date(),
+     updatedAt: new Date()
      },
     {
      numero: 7548,
-     descricao:"Agência Internacional"
+     descricao:"Agência Internacional",
+     createdAt: new Date(),
+     updatedAt: new Date()
      },
     {
      numero: 1585,
-     descricao:"Agência Wenefredo Portela"
+     descricao:"Agência Wenefredo Portela",
+     createdAt: new Date(),
+     updatedAt: new Date()
      },
     {
      numero: 4259,
-     descricao:"Agência Brasileira de Contas"
+     descricao:"Agência Brasileira de Contas",
+     createdAt: new Date(),
+     updatedAt: new Date()
      },
     {
      numero: 9648,
-     descricao:"Agência Militar"
+     descricao:"Agência Militar",
+     createdAt: new Date(),
+     updatedAt: new Date()
      },
     ], {});
     
