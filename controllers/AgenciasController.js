@@ -3,7 +3,7 @@ const database = require('../models')
 const Op = Sequelize.Op
 
 class AgenciasController{
-    static async buscaAgencias(req, res){
+    static async buscaTodasAgencias(req, res){
         try{
             const todasAgencias = database.findAll()
             return res.status(200).json(todasAgencias)
@@ -72,7 +72,7 @@ class AgenciasController{
             })
         }
     }
-    static async buscarPorNumero(req, res) {
+    static async buscaAgenciaPorNumero(req, res) {
         let nome = '%'+req.query.nome
         try {
             const agencias = await database.findAll({
