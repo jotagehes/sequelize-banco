@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       cnpj: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       razao: {
         type: Sequelize.STRING

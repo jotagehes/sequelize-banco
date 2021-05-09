@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   };
   Agencias.init({
     numero: DataTypes.INTEGER,
-    numero: DataTypes.INTEGER,
     descricao: DataTypes.STRING
   }, {
     sequelize,

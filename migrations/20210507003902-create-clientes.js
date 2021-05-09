@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       cpf: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       sexo: {
         type: Sequelize.STRING

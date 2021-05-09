@@ -11,9 +11,6 @@ module.exports = {
       numero: {
         type: Sequelize.INTEGER
       },
-      numero: {
-        type: Sequelize.INTEGER
-      },
       descricao: {
         type: Sequelize.STRING
       },
