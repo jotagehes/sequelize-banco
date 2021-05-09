@@ -13,7 +13,7 @@ class AgenciasController{
             })
         }
     }
-    static async buscaAgenciasID(req, res){
+    static async buscaAgenciaPorID(req, res){
         const { id } = req.params
         try{
             const agenciaRetorno = database.findOne({

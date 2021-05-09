@@ -14,7 +14,7 @@ class ClientesController{
             })
         }
     }
-    static async buscaClienteID(req, res){
+    static async buscaClientePorID(req, res){
         const { id } = req.params
         try{
             const clienteRetorno = database.findOne({
@@ -73,7 +73,7 @@ class ClientesController{
             })
         }
     }
-    static async buscarClientePorNome(req, res) {
+    static async buscaClientePorNome(req, res) {
         let nome = '%'+req.query.nome
         try {
             const agencias = await database.findAll({

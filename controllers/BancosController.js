@@ -14,7 +14,7 @@ class BancosController{
             })
         }
     }
-    static async buscaBancoID(req, res){
+    static async buscaBancoPorID(req, res){
         const { id } = req.params
         try{
             const bancoRetorno = database.findOne({
@@ -73,7 +73,7 @@ class BancosController{
             })
         }
     }
-    static async buscarBancoPorNumero(req, res) {
+    static async buscaBancoPorNumero(req, res) {
         let nome = '%'+req.query.nome
         try {
             const bancos = await database.findAll({
