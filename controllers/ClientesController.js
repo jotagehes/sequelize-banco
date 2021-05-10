@@ -77,14 +77,14 @@ class ClientesController{
     static async buscaClientePorNome(req, res) {
         let nome = '%'+req.query.nome
         try {
-            const agencias = await Clientes.findAll({
+            const clientes = await Clientes.findAll({
                 where:{
                     nome: {
                         [Op.like]: nome
                     }
                 }
             })
-            return res.status(200).json(agencias)
+            return res.status(200).json(clientes)
         }catch(erro){
             return res.status(400).json({
                 error: erro.message

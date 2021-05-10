@@ -75,12 +75,12 @@ class BancosController{
         }
     }
     static async buscaBancoPorNumero(req, res) {
-        let nome = '%'+req.query.nome
+        let cnpj = '%'+req.query.cnpj
         try {
             const bancos = await Bancos.findAll({
                 where:{
-                    nome: {
-                        [Op.like]: nome
+                    cnpj: {
+                        [Op.like]: cnpj
                     }
                 }
             })
