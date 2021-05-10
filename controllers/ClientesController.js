@@ -1,5 +1,5 @@
 const {
-    Bancos, Sequelize 
+    Clientes, Sequelize 
 } = require('../models/')
 const Op = Sequelize.Op
     
@@ -7,7 +7,7 @@ const Op = Sequelize.Op
 class ClientesController{
     static async buscaTodosClientes(req, res){
         try{
-            const todasClientes = Clientes.findAll()
+            const todasClientes = await Clientes.findAll()
             return res.status(200).json(todasClientes)
         }catch(erro){
             return res.status(400).json({

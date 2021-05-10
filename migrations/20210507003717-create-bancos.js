@@ -9,12 +9,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       cnpj: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       razao: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       contato: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {

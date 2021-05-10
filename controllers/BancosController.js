@@ -7,8 +7,8 @@ const Op = Sequelize.Op
 class BancosController{
     static async buscaTodosBancos(req, res){
         try{
-            const todasBancos = Bancos.findAll()
-            return res.status(200).json(todasBancos)
+            const todosBancos = await Bancos.findAll()
+            return res.status(200).json(todosBancos)
         }catch(erro){
             return res.status(400).json({
                 error: erro.message
@@ -18,7 +18,7 @@ class BancosController{
     static async buscaBancoPorID(req, res){
         const { id } = req.params
         try{
-            const bancoRetorno = Bancos.findOne({
+            const bancoRetorno = await Bancos.findOne({
                 where: { id:Number(id)
 
                 }

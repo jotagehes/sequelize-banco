@@ -17,7 +17,7 @@ class AgenciasController{
     static async buscaAgenciaPorID(req, res){
         const { id } = req.params
         try{
-            const agenciaRetorno = database.findOne({
+            const agenciaRetorno = await Agencias.findOne({
                 where: { id:Number(id)
 
                 }
@@ -31,7 +31,7 @@ class AgenciasController{
     }
     static async inserirAgencia(req, res) {
         try {
-            const novaAgencia = await database.create(req.body)
+            const novaAgencia = await Agencias.create(req.body)
             return res.status(200).json(novaAgencia)
         } catch (erro) {
             return res.status(400).json({
@@ -41,7 +41,7 @@ class AgenciasController{
     }
     static async deletaAgencia(req, res) {
         try {
-            const agenciaAlvo = await database.findByPk(req.params.id)
+            const agenciaAlvo = await Agencias.findByPk(req.params.id)
             if (agenciaAlvo) {
                 await agenciaAlvo.destroy()
                 return res.status(204).json(agenciaAlvo)
@@ -58,7 +58,7 @@ class AgenciasController{
     }
     static async atualizaAgencia(req, res) {
         try {
-            const agenciaAlvo = await database.findByPk(req.params.id)
+            const agenciaAlvo = await Agencias.findByPk(req.params.id)
             if (agenciaAlvo) {
                 await agenciaAlvo.update(req.body)
                 return res.status(204).json(agenciaAlvo)
@@ -76,7 +76,7 @@ class AgenciasController{
     static async buscaAgenciaPorNumero(req, res) {
         let nome = '%'+req.query.nome
         try {
-            const agencias = await database.findAll({
+            const agencias = await Agencias.findAll({
                 where:{
                     nome: {
                         [Op.like]: nome
